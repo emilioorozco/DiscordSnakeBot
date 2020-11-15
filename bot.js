@@ -1,19 +1,4 @@
-﻿//just a bunch of tokens and keys so that i can reference them later
-const mdiggyToken   = '409065099274223617'
-const oscarToken    = '677038220566986754'
-const henryToken    = '384438115596632066'
-const alexToken     = '231951116148015105'
-const obamaToken    = '340278485979365396'
-const sigmaToken    = '379121759913377833'
-
-//array of keys correlating to each user
-const tokenArray =new Array(
-    '409065099274223617',   //miggy
-    '677038220566986754',   //Oscar
-    '384438115596632066',   //Henry
-    '231951116148015105',   //Alex
-    '340278485979365396',   //Obama
-    '379121759913377833');  //Sigma
+﻿
 
 
 //require discord.js module
@@ -23,8 +8,12 @@ const fetch = require("node-fetch");
 //pulls from the config file to use later
 const { 
     prefix, //prefix to command
-    token,  //token for bot
+    botToken,  //token for bot
     blessed, //to troll alex of course
+    weatherKey,
+
+    //users
+    Miggy,Oscar,Henry,Alex,Obama,Sigma,
     
     //user roles by city
     pasco,
@@ -33,6 +22,8 @@ const {
     pullman
 } 
     = require('./config.json');
+//array of keys correlating to each user
+const tokenArray =new Array(Miggy,Oscar,Henry,Alex,Obama,Sigma,);  //Sigma
 
 //creates a new discord client
 const client = new Discord.Client();
@@ -41,7 +32,7 @@ const client = new Discord.Client();
 client.on('ready', () => console.log('Snake is ready'))
 
 //logs bot into discord
-client.login(token);
+client.login(botToken);
 
 //response for help command. displays list of commands and thier uses
 const helpResponse=
@@ -86,12 +77,14 @@ Function that displays miggys crypto holdings
 If a user was mentioned without any other text it will reply with "sucks"
 function exludes myself of course
 */  
-    //looks to see if the user is not me
-    for(let i in tokenArray){
-        if((userMessage === `<@!${tokenArray[i]}>`) && i!=5){
-            msg.channel.send('sucks');
-        }
-    }
+    //this regular expression looks for tagged users 
+    const taggedExp = new RegExp(String.raw`<@![0-9]{18}>`,'g')
+
+    //if the string is 22 characthers long it indicates there is no spaces. 
+    //regular expression checks for what discord shows as a tagged user. 
+    //makes sure its not me
+    if((userMessage.length===22) && taggedExp.test(userMessage) && (userMessage!=`<@!${Sigma}>`))
+        msg.channel.send('sucks');
 });
 
 /*
@@ -132,7 +125,6 @@ function findUserZip(msg){
 }
 
 function getWeather(zip,msg){
-    const weatherKey ='d54d2293f2650886e2c18b458680edd3';
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${weatherKey}`)
     .then(function(resp) { return resp.json() }) // Convert data to json
