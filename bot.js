@@ -13,13 +13,16 @@ const {
     weatherKey,
 
     //users
-    Sigma,
+    sigma,
     
     //user roles by city
     pasco,
     richland,
     grandview,
-    pullman
+    pullman,
+
+    //channel id
+    general
 } 
     = require('./config.json');
 
@@ -27,7 +30,7 @@ const {
 const client = new Discord.Client();
 
 //Starts the discord bot. triggers when bot logs in
-client.on('ready', () => console.log('Snake is ready'))
+client.on('ready', () => client.channels.cache.get(general).send('I have arrived peasantsssssssss'))
 
 //logs bot into discord
 client.login(botToken);
@@ -81,7 +84,7 @@ function exludes myself of course
     //if the string is 22 characthers long it indicates there is no spaces. 
     //regular expression checks for what discord shows as a tagged user. 
     //makes sure its not me
-    if((userMessage.length===22) && taggedExp.test(userMessage) && (userMessage!=`<@!${Sigma}>`))
+    if((userMessage.length===22) && taggedExp.test(userMessage) && (userMessage!=`<@!${sigma}>`))
         msg.channel.send('sucks');
 });
 
