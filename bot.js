@@ -13,7 +13,7 @@ const {
     weatherKey,
 
     //users
-    Miggy,Oscar,Henry,Alex,Obama,Sigma,
+    Sigma,
     
     //user roles by city
     pasco,
@@ -22,8 +22,6 @@ const {
     pullman
 } 
     = require('./config.json');
-//array of keys correlating to each user
-const tokenArray =new Array(Miggy,Oscar,Henry,Alex,Obama,Sigma,);  //Sigma
 
 //creates a new discord client
 const client = new Discord.Client();
