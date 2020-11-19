@@ -107,10 +107,11 @@ It will request a joke from the random joke api and then it will respond with a 
 */
     if(userMessage.startsWith(`${prefix}joke`))
     {
-        
         getFromApiToJSON('https://official-joke-api.appspot.com/jokes/random')
         .then(data => {
+            //sends the setup to the channel where the message was posted
             msg.channel.send(data.setup);
+            //sends the punchline to the channel where the message was posted after 5 seconds
             setTimeout(() => {msg.channel.send(data.punchline);},5000);
             })
         .catch(err => console.log(err));
