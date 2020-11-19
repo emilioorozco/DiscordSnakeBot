@@ -38,9 +38,10 @@ client.login(botToken);
 //response for help command. displays list of commands and thier uses
 const helpResponse=
 `
-!MiggysCryptoHolding - Displays miggys shady crpto holdings
+!miggyscryptoholding - Displays miggys shady crpto holdings
 !weather - work in progress. come back later
 !help - brings this up dumb fuck
+!joke - tells a random joke
 `;
 
 /*
@@ -61,16 +62,28 @@ displays a list of commands
 /*
 Will take the users role and display weather corresponding to them. 
  */
-    if(userMessage === `${prefix}weather`)
+    if(userMessage.startsWith(`${prefix}weather`))
     {
-        let userRole = findUserZip(msg);
-        getWeather(userRole,msg);
+        //determines users role in the discord and relates it to a set zip code
+        let userZip = findUserZip(msg);
+
+        //pulls from weather api
+        const urlFromZip= `https://api.openweathermap.org/data/2.5/weather?zip=${userZip}&units=imperial&appid=${weatherKey}`;
+
+        getFromApiToJSON(urlFromZip)
+        .then(data => {
+            //displays weather to whole number
+            const temperature= Math.floor(data.main['temp']);
+            const weatherMessage= `It is currently ${temperature}°F in ${data.name}.`;
+            msg.channel.send(weatherMessage);
+        })
+        .catch(err => console.log(err));
     }
 
 /*
 Function that displays miggys crypto holdings
 */
-    if (userMessage === `${prefix}miggyscryptoholding`){
+    if (userMessage.startsWith(`${prefix}miggyscryptoholding`)){
         msg.reply(`100% $LINK forever. ${blessed}`);
     } 
 
@@ -81,11 +94,27 @@ function exludes myself of course
     //this regular expression looks for tagged users 
     const taggedExp = new RegExp(String.raw`<@![0-9]{18}>`,'g')
 
-    //if the string is 22 characthers long it indicates there is no spaces. 
-    //regular expression checks for what discord shows as a tagged user. 
-    //makes sure its not me
+    /*if the string is 22 characthers long it indicates there is no spaces. 
+    regular expression checks for what discord shows as a tagged user. 
+    makes sure its not me*/
     if((userMessage.length===22) && taggedExp.test(userMessage) && (userMessage!=`<@!${sigma}>`))
         msg.channel.send('sucks');
+
+
+/*
+This function will display a random joke.
+It will request a joke from the random joke api and then it will respond with a random joke and punchline
+*/
+    if(userMessage.startsWith(`${prefix}joke`))
+    {
+        
+        getFromApiToJSON('https://official-joke-api.appspot.com/jokes/random')
+        .then(data => {
+            msg.channel.send(data.setup);
+            setTimeout(() => {msg.channel.send(data.punchline);},5000);
+            })
+        .catch(err => console.log(err));
+    }
 });
 
 /*
@@ -102,7 +131,6 @@ function findUserZip(msg){
         msg.channel.send('pasco boiiiiis');
         return '99301';
     }
-
     else 
     if (userRole.has(richland)) {
         msg.channel.send('too rich for yall');   
@@ -122,26 +150,13 @@ function findUserZip(msg){
         msg.channel.send('you aint from round these parts are ya');
         return null;
     }
-     
 }
 
-function getWeather(zip,msg){
-
-    fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${weatherKey}`)
-    .then(function(resp) { return resp.json() }) // Convert data to json
-    .then(function(data) {
-      //  console.log(data);
-
-        let weatherMessage=
-        `It is currently ${data.main['temp']}°F  in ${data.name}.`;
-        msg.channel.send(weatherMessage);
-        console.log(data.main['temp']);
-
-  })
-  .catch(function() {
-    // catch any errors
-  });
-
+/*
+Takes in a URL and pulls from an API and then converts the data to JSON
+*/
+async function getFromApiToJSON(url){
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
 }
-
-
