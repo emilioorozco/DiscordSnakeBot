@@ -38,6 +38,7 @@ client.login(botToken);
 //response for help command. displays list of commands and thier uses
 const helpResponse=
 `
+Watcha needsssssss from me?
 !miggyscryptoholding - Displays miggys shady crpto holdings
 !weather - work in progress. come back later
 !help - brings this up dumb fuck
