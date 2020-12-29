@@ -85,7 +85,7 @@ Will take the users role and display weather corresponding to them.
 Function that displays miggys crypto holdings
 */
     if (userMessage.startsWith(`${prefix}miggyscryptoholding`)){
-        msg.reply(`100% $LINK forever. ${blessed}`);
+        msg.reply(`Idk man yall know hes inconsitent. ${blessed}`);
     } 
 
 /*
