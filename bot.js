@@ -6,25 +6,23 @@ const Discord = require('discord.js');
 const fetch = require("node-fetch");
 
 //pulls from the config file to use later
-const { 
-    prefix, //prefix to command
-    botToken,  //token for bot
-    blessed, //to troll alex of course
-    weatherKey,
+
+    const process.env.prefix; //prefix to command
+    const process.env.botToken;  //token for bot
+    const process.env.blessed; //to troll alex of course
+    const process.env.weatherKey;
 
     //users
-    sigma,
+    const process.env.sigma;
     
     //user roles by city
-    pasco,
-    richland,
-    grandview,
-    pullman,
+    const process.env.pasco;
+    const process.env.richland;
+    const process.env.grandview;
+    const process.env.pullman;
 
     //channel id
-    general
-} 
-    = require('./config.json');
+    const process.env.general;
 
 //creates a new discord client
 const client = new Discord.Client();
