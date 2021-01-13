@@ -7,22 +7,22 @@ const fetch = require("node-fetch");
 
 //pulls from the config file to use later
 
-    const process.env.prefix; //prefix to command
-    const process.env.botToken;  //token for bot
-    const process.env.blessed; //to troll alex of course
-    const process.env.weatherKey;
+    const prefix=process.env.prefix; //prefix to command
+    const botToken=process.env.botToken;  //token for bot
+    const blessed=process.env.blessed; //to troll alex of course
+    const weatherKey=process.env.weatherKey;
 
     //users
-    const process.env.sigma;
+    const sigma=process.env.sigma;
     
     //user roles by city
-    const process.env.pasco;
-    const process.env.richland;
-    const process.env.grandview;
-    const process.env.pullman;
+    const pasco=process.env.pasco;
+    const richland=process.env.richland;
+    const grandview=process.env.grandview;
+    const pullman=process.env.pullman;
 
     //channel id
-    const process.env.general;
+    const general=process.env.general;
 
 //creates a new discord client
 const client = new Discord.Client();
