@@ -5,6 +5,8 @@
 const Discord = require('discord.js');
 const fetch = require("node-fetch");
 
+process.env.port;
+
 //pulls from the config file to use later
 
     const prefix=process.env.prefix; //prefix to command
