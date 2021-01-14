@@ -150,6 +150,7 @@ function findUserZip(msg){
     }
     if(userRole.has(vegas)){
         msg.channel.send('id say yous a bettin man');
+        return '89122';
     }
     else{
         msg.channel.send('you aint from round these parts are ya');
