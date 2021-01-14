@@ -5,7 +5,6 @@
 const Discord = require('discord.js');
 const fetch = require("node-fetch");
 
-process.env.port;
 
 //pulls from the config file to use later
 
@@ -62,7 +61,7 @@ displays a list of commands
 
 /*
 Will take the users role and display weather corresponding to them. 
- */
+
     if(userMessage.startsWith(`${prefix}weather`))
     {
         //determines users role in the discord and relates it to a set zip code
@@ -80,7 +79,7 @@ Will take the users role and display weather corresponding to them.
         })
         .catch(err => console.log(err));
     }
-
+ */
 /*
 Function that displays miggys crypto holdings
 */
