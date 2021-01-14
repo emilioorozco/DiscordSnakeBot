@@ -21,6 +21,7 @@ const fetch = require("node-fetch");
     const richland=process.env.richland;
     const grandview=process.env.grandview;
     const pullman=process.env.pullman;
+    const vegas=process.env.vegas;
 
     //channel id
     const general=process.env.general;
@@ -29,7 +30,7 @@ const fetch = require("node-fetch");
 const client = new Discord.Client();
 
 //Starts the discord bot. triggers when bot logs in
-client.on('ready', () => client.channels.cache.get(general).send('I have arrived peasantsssssssss'))
+client.on('ready', () => console.log('I have arrived peasantsssssssss'))
 
 //logs bot into discord
 client.login(botToken);
@@ -146,6 +147,9 @@ function findUserZip(msg){
     if (userRole.has(pullman)) {
         msg.channel.send('you from bum fuck nowhere b');
         return '99163';
+    }
+    if(userRole.has(vegas)){
+        msg.channel.send('id say yous a bettin man');
     }
     else{
         msg.channel.send('you aint from round these parts are ya');
