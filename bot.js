@@ -43,6 +43,7 @@ Watcha needsssssss from me?
 !weather - work in progress. come back later
 !help - brings this up dumb fuck
 !joke - tells a random joke
+!weebscripture - anime quote
 `;
 
 /*
@@ -117,6 +118,19 @@ It will request a joke from the random joke api and then it will respond with a 
             })
         .catch(err => console.log(err));
     }
+/*
+This function will display an anime quote
+*/    
+    if(userMessage.startsWith(`${prefix}weebscripture`))
+    {
+        getFromApiToJSON(`https://animechanapi.xyz/api/quotes/random`)
+        .then((data) => {
+            const quote = data.data[0].quote;
+            msg.channel.send(quote);
+        })
+        .catch(err => console.log(err));
+    }
+    
 });
 
 /*
