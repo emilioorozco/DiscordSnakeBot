@@ -125,8 +125,8 @@ This function will display an anime quote
     {
         getFromApiToJSON(`https://animechanapi.xyz/api/quotes/random`)
         .then((data) => {
-            const quote = data.data[0].quote;
-            msg.channel.send(quote);
+            const { quote, character, anime } = data.data[0];
+            msg.channel.send(`${quote} - ${character} (${anime})`);
         })
         .catch(err => console.log(err));
     }
