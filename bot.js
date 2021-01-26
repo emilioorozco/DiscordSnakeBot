@@ -39,12 +39,12 @@ client.login(botToken);
 const helpResponse=
 `
 Watcha needsssssss from me?
-!miggyscryptoholding - Displays miggys shady crpto holdings
-!weather - work in progress. come back later
-!help - brings this up dumb fuck
-!joke - tells a random joke
-!weebscripture - anime quote
-!varglu - will insult varglu 99/100 times. 
+!miggyscryptoholding - Displays miggys shady crpto holdings.
+!weather - Displays the weather in your location.
+!help - Brings this up, dumb fuck.
+!joke - Tells a random joke.
+!weebscripture - Random anime quote.
+!varglu - Will insult varglu 99% of the time. You will compliment him the other 1% 
 `;
 
 /*
