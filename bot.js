@@ -44,6 +44,7 @@ Watcha needsssssss from me?
 !help - brings this up dumb fuck
 !joke - tells a random joke
 !weebscripture - anime quote
+!varglu - will insult varglu 99/100 times. 
 `;
 
 /*
@@ -130,7 +131,29 @@ This function will display an anime quote
         })
         .catch(err => console.log(err));
     }
-    
+    if(userMessage.startsWith(`${prefix}varglu`))
+    {
+        if ((Math.floor(Math.random() * Math.floor(101)) === 69) && (userMessage!=`<@!${sigma}>`)) {
+            const API = `https://complimentr.com/api`;
+            getFromApiToJSON(API)
+            .then((data) => {
+                let gluToYou = data.compliment.replace(" you ", " Varglu ");
+                let areToIs = gluToYou.replace(" are ", " is ");
+                let haveToHas = areToIs.replace(" have ", " has ");
+                let finalMessage = `${haveToHas} - user`;
+                msg.channel.send(finalMessage);
+            })
+            .catch((err) => console.log(err));
+        } 
+        else {
+            const API = `https://insult.mattbas.org//api/insult.json?who=Varglu`;
+            getFromApiToJSON(API)
+            .then((data) => {
+                msg.channel.send(data.insult);
+            })
+            .catch((err) => console.log(err));
+        }
+    }
 });
 
 /*
