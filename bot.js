@@ -137,10 +137,11 @@ This function will display an anime quote
             const API = `https://complimentr.com/api`;
             getFromApiToJSON(API)
             .then((data) => {
+                
                 let gluToYou = data.compliment.replace(" you ", " Varglu ");
                 let areToIs = gluToYou.replace(" are ", " is ");
                 let haveToHas = areToIs.replace(" have ", " has ");
-                let finalMessage = `${haveToHas} - user`;
+                let finalMessage = `${haveToHas} - ${msg.author.username}`;
                 msg.channel.send(finalMessage);
             })
             .catch((err) => console.log(err));
