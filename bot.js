@@ -63,7 +63,8 @@ displays a list of commands
     }
 //Test command
     if(userMessage.startsWith(`${prefix}test`)){
-        msg.channel.send('<:diamondhands:806571721419128843>')
+        const ayy = client.emojis.cache.get("806571721419128843");
+        msg.channel.send(ayy);
     }
     
 /*
