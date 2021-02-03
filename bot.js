@@ -67,7 +67,7 @@ displays a list of commands
     
  //STONKS!!!
     if(userMessage.startsWith(`${prefix}stonks`)){
-        const eoShares = 5;
+        const eoShares = 4;
         const eoCost= 245.59;
         const eoTotal=eoShares*eoCost;
         getFromApiToJSON(`https://finnhub.io/api/v1/quote?symbol=GME&token=${stonkKey}`)
@@ -76,7 +76,7 @@ displays a list of commands
             if(GMEPrice<245)
             {
                 const eoDown= eoTotal-(GMEPrice*eoShares);
-                msg.channel.send(`Emilio is down:$${eoDown}. Ya boi still has a ways to go. GME: $${GMEPrice}`);
+                msg.channel.send(`Emilio is down: -$${eoDown}. Ya boi still has a ways to go. GME: $${GMEPrice}`);
             }
             else{
                 msg.channel.send(`Nothin but tendies :rocket: GME: $${GMEPrice}`);
