@@ -81,6 +81,17 @@ displays a list of commands
         .catch(err => console.log(err));
     }
     
+    //actual stock price command
+    if(userMessage.startsWith(`$stonks`)){
+        const ticker = usermessage.substring(1).toUppercase;
+        getFromApiToJSON(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${stonkKey}`)
+        .then(data => {
+            const price = data.c;
+            msg.channel.send(`${ticker}: $${price}`);
+        })
+        .catch(err => console.log(err));
+    }
+    
     
 /*
 Will take the users role and display weather corresponding to them. 
@@ -153,7 +164,7 @@ This function will display an anime quote
     }
     if(userMessage.startsWith(`${prefix}varglu`))
     {
-        if ((Math.floor(Math.random() * Math.floor(101)) === 69) && (userMessage!=`<@!${sigma}>`)) {
+        if ((Math.floor(Math.random() * Math.floor(100)) === 69) && (userMessage!=`<@!${sigma}>`)) {
             const API = `https://complimentr.com/api`;
             getFromApiToJSON(API)
             .then((data) => {
