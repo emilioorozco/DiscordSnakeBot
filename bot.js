@@ -45,7 +45,7 @@ Watcha needsssssss from me?
 !joke - Tells a random joke.
 !weebscripture - Random anime quote.
 !varglu - Will insult varglu 99% of the time. You will compliment him the other 1%
-THIS IS A TEST LINE TO SEE IF SNAKEBOT CAN REPLY WITH EMOJIS :rocket: :diamondhands: 
+THIS IS TEST #2 <:diamondhands:806549355548246096> 
 `;
 
 /*
