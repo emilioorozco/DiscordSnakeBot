@@ -82,15 +82,21 @@ displays a list of commands
     }
     
     //actual stock price command
-    if(userMessage.startsWith(`$stonks`)){
-        const ticker = usermessage.substring(1).toUppercase;
-        getFromApiToJSON(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${stonkKey}`)
-        .then(data => {
-            const price = data.c;
-            msg.channel.send(`${ticker}: $${price}`);
-        })
-        .catch(err => console.log(err));
-    }
+    if (userMessage.startsWith(`$`)) {
+    let ticker = userMessage.substring(1);
+    ticker = ticker.toUpperCase();
+    console.log(ticker);
+    getFromApiToJSON(
+      `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${stonkKey}`
+    )
+      .then((data) => {
+        const price = data.c;
+        if (price > 0) {
+          msg.channel.send(`${ticker}: $${price}`);
+        }
+      })
+      .catch((err) => console.log(err));
+  }
     
     
 /*
