@@ -63,7 +63,7 @@ displays a list of commands
     }
 //Test command
     if(userMessage.startsWith(`${prefix}test`)){
-        msg.channel.send('<:diamondhands:806549355548246096>')
+        msg.channel.send('<:diamondhands:806571721419128843>')
     }
     
 /*
