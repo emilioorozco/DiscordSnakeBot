@@ -12,6 +12,7 @@ const fetch = require("node-fetch");
     const botToken=process.env.botToken;  //token for bot
     const blessed=process.env.blessed; //to troll alex of course
     const weatherKey=process.env.weatherKey;
+    const stonkKey=process.env.stonkKey;
 
     //users
     const sigma=process.env.sigma;
@@ -22,6 +23,7 @@ const fetch = require("node-fetch");
     const grandview=process.env.grandview;
     const pullman=process.env.pullman;
     const vegas=process.env.vegas;
+   
 
     //channel id
     const general=process.env.general;
@@ -45,6 +47,7 @@ Watcha needsssssss from me?
 !joke - Tells a random joke.
 !weebscripture - Random anime quote.
 !varglu - Will insult varglu 99% of the time. You will compliment him the other 1%
+!emoji - Displays all current emojis
 `;
 
 /*
@@ -61,11 +64,23 @@ displays a list of commands
     if(userMessage.startsWith(`${prefix}help`)){
         msg.channel.send(helpResponse);
     }
-//Test command
-    if(userMessage.startsWith(`${prefix}test`)){
-        const ayy = client.emojis.cache.get("806571721419128843");
-        msg.channel.send(ayy);
+    
+ //STONKS!!!
+    if(userMessage.startsWith(`${prefix}stonks`)){
+        getFromApiToJSON(`https://finnhub.io/api/v1/quote?symbol=GME&token=${stonkKey}`)
+        .then(data => {
+            const GMEPrice = data.c;
+            if(GMEPrice<245)
+            {
+                msg.channel.send(`Ya boi still has a ways to go GME: $${GMEPrice}`);
+            }
+            else{
+                msg.channel.send(`Nothin but tendies :rocket: GME: $${GMEPrice}`);
+            }
+        })
+        .catch(err => console.log(err));
     }
+    
     
 /*
 Will take the users role and display weather corresponding to them. 
