@@ -45,7 +45,6 @@ Watcha needsssssss from me?
 !joke - Tells a random joke.
 !weebscripture - Random anime quote.
 !varglu - Will insult varglu 99% of the time. You will compliment him the other 1%
-THIS IS TEST #2 <:diamondhands:806549355548246096> 
 `;
 
 /*
@@ -62,7 +61,11 @@ displays a list of commands
     if(userMessage.startsWith(`${prefix}help`)){
         msg.channel.send(helpResponse);
     }
-
+//Test command
+    if(userMessage.startsWith(`${prefix}test`)){
+        msg.channel.send('<:diamondhands:806549355548246096>')
+    }
+    
 /*
 Will take the users role and display weather corresponding to them. 
  */
