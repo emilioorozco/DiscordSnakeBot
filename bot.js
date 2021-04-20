@@ -48,6 +48,7 @@ Watcha needsssssss from me?
 !weebscripture - Random anime quote.
 !varglu - Will insult varglu 99% of the time. You will compliment him the other 1%
 !emoji - Displays all current emojis
+${blessed}
 `;
 
 /*
@@ -142,7 +143,7 @@ function exludes myself of course
     regular expression checks for what discord shows as a tagged user. 
     makes sure its not me*/
     if((userMessage.length===22) && taggedExp.test(userMessage) && (userMessage!=`<@!${sigma}>`))
-        msg.channel.send('sucks');
+        msg.channel.send(`sucks ${blessed}`);
 
 
 /*
