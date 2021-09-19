@@ -36,3 +36,5 @@ const commandHandler = (msg) => {
   )
     msg.channel.send(`sucks ${process.env.blessed}`);
 };
+
+exports.commandHandler = commandHandler;

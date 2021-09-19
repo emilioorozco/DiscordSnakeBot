@@ -7,7 +7,7 @@ client.login(process.env.botToken);
 client.on("ready", () => console.log("I have arrived peasantsssssssss"));
 
 //grabs commands for discord bot
-const commandHandler = require("./src/commandHandler");
+const { commandHandler } = require("./src/commandHandler");
 
 //sends messages to command handler
 client.on("message", commandHandler);
