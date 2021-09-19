@@ -7,7 +7,7 @@ const commands = {
   miggyscryptoholdings: Commands.miggysCryptoHolding, //being lazy here because they cant remember if it has an S or not
   trashglu: Commands.trashglu,
   weather: Commands.weather,
-  weebScripture: Commands.weebScripture,
+  weebscripture: Commands.weebScripture,
   help: Commands.help,
 };
 //prefix that we will be looking for in our messages for certain commands
@@ -28,7 +28,8 @@ export const commandHandler = (msg) => {
 
   /*if the string is 22 characthers long it indicates there is no spaces. 
     regular expression checks for what discord shows as a tagged user. 
-    makes sure its not me*/
+    makes sure its not me
+    */
   if (
     rawMessage.length === 22 &&
     taggedExp.test(rawMessage) &&
