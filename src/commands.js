@@ -5,13 +5,15 @@ This function will display a random joke.
 It will request a joke from the random joke api and then it will respond with a random joke and punchline
 */
 export const joke = (msg) => {
-  getFromApiToJSON("https://official-joke-api.appspot.com/jokes/random")
+  getFromApiToJSON(
+    "https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious&type=twopart"
+  )
     .then((data) => {
       //sends the setup to the channel where the message was posted
       msg.channel.send(data.setup);
-      //sends the punchline to the channel where the message was posted after 5 seconds
+      //sends the delivery to the channel where the message was posted after 5 seconds
       setTimeout(() => {
-        msg.channel.send(data.punchline);
+        msg.channel.send(data.delivery);
       }, 5000);
     })
     .catch((err) => console.log(err));
