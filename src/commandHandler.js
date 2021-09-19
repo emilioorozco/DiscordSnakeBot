@@ -5,7 +5,7 @@ const commands = {
   joke: Commands.joke,
   miggyscryptoholding: Commands.miggysCryptoHolding,
   miggyscryptoholdings: Commands.miggysCryptoHolding, //being lazy here because they cant remember if it has an S or not
-  varglu: Commands.trashglu,
+  trashglu: Commands.trashglu,
   weather: Commands.weather,
   weebScripture: Commands.weebScripture,
   help: Commands.help,
