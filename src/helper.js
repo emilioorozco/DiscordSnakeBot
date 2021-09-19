@@ -14,24 +14,22 @@ This function will verify which role the user has in the discord channel and ret
 code correspoinding to that role as well as prints a silly message.
 */
 export const findUserZip = (msg) => {
-  switch (msg.member.roles.cache.toString()) {
-    case process.env.pasco:
-      msg.channel.send("pasco boiiiiis");
-      return "99301";
-    case has(process.env.richland):
-      msg.channel.send("too rich for yall");
-      return "99352";
-    case has(process.env.grandview):
-      msg.channel.send("what a grand view of that ass");
-      return "98930";
-    case has(process.env.pullman):
-      msg.channel.send("you from bum fuck nowhere b");
-      return "99163";
-    case has(process.env.vegas):
-      msg.channel.send("id say yous a bettin man");
-      return "89122";
-    default:
-      msg.channel.send("you aint from round these parts are ya");
-      return null;
-  }
+  const { pasco, richland, grandview, pullman, vegas } = process.env;
+
+  const zipCodes = {
+    pasco: ["99301", "pasco boiiiiis"],
+    richland: ["99352", "too rich for yall"],
+    grandview: ["98930", "what a grand view of that ass"],
+    pullman: ["99163", "you from bum fuck nowhere b"],
+    vegas: ["89122", "id say yous a bettin man"],
+  };
+
+  Object.keys(zipCodes).forEach((key) => {
+    if (msg.member.roles.cache.has(key)) {
+      msg.channel.send(zipCodes[key][1]);
+      return zipCodes[key][0];
+    }
+  });
+  msg.channel.send("you aint from round these parts are ya");
+  return null;
 };
