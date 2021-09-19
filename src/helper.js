@@ -14,8 +14,8 @@ This function will verify which role the user has in the discord channel and ret
 code correspoinding to that role as well as prints a silly message.
 */
 export const findUserZip = (msg) => {
-  switch (msg.member.roles.cache) {
-    case has(process.env.pasco):
+  switch (msg.member.roles.cache.toString()) {
+    case process.env.pasco:
       msg.channel.send("pasco boiiiiis");
       return "99301";
     case has(process.env.richland):
