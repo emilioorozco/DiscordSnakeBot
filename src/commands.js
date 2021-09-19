@@ -4,7 +4,7 @@ const { getFromApiToJSON, findUserZip } = require("./helper.js");
 This function will display a random joke.
 It will request a joke from the random joke api and then it will respond with a random joke and punchline
 */
-export export const joke = (msg) => {
+export const joke = (msg) => {
   getFromApiToJSON("https://official-joke-api.appspot.com/jokes/random")
     .then((data) => {
       //sends the setup to the channel where the message was posted
@@ -99,4 +99,3 @@ export const help = (msg) => {
   ${process.env.blessed}
   `);
 };
-
