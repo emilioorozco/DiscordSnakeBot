@@ -34,5 +34,5 @@ export const commandHandler = (msg) => {
     taggedExp.test(rawMessage) &&
     rawMessage != `<@!${process.env.sigma}>`
   )
-    msg.channel.send(`sucks ${process.env.blessed}`);
+    msg.channel.send(`SUCKS! ${process.env.blessed}`);
 };
