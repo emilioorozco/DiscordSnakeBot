@@ -1,11 +1,11 @@
-const Commands = require("./commands");
+import Commands from "./commands";
 
 //list of commands that can be used with the specified prefix. Easier to call them later on this way
 const commands = {
   joke: Commands.joke,
   miggyscryptoholding: Commands.miggysCryptoHolding,
   miggyscryptoholdings: Commands.miggysCryptoHolding, //being lazy here because they cant remember if it has an S or not
-  trashglu: Commands.trashglu,
+  varglu: Commands.trashglu,
   weather: Commands.weather,
   weebScripture: Commands.weebScripture,
   help: Commands.help,
@@ -15,7 +15,7 @@ const prefix = "!";
 //this regular expression looks for tagged users
 const taggedExp = new RegExp(String.raw`<@![0-9]{18}>`, "g");
 
-const commandHandler = (msg) => {
+export const commandHandler = (msg) => {
   let firstChar = msg.content.charAt(0);
   let userMessage = msg.content.toLowerCase().substring(1); // change message to lowercase
   let rawMessage = msg.content;
@@ -24,7 +24,7 @@ const commandHandler = (msg) => {
     commands[userMessage](msg);
   }
 
-  if (firstChar === "$") commands.stonks(msg);
+  if (firstChar === "$") Commands.stonks(msg);
 
   /*if the string is 22 characthers long it indicates there is no spaces. 
     regular expression checks for what discord shows as a tagged user. 
@@ -36,5 +36,3 @@ const commandHandler = (msg) => {
   )
     msg.channel.send(`sucks ${process.env.blessed}`);
 };
-
-exports.commandHandler = commandHandler;
