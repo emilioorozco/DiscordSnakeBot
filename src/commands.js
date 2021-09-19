@@ -1,4 +1,4 @@
-const { getFromApiToJSON, findUserZip } = require("./helper.js");
+import { getFromApiToJSON, findUserZip } from "./helper.js";
 
 /*
 This function will display a random joke.
