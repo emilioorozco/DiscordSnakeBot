@@ -4,7 +4,7 @@ const { getFromApiToJSON, findUserZip } = require("./helper");
 This function will display a random joke.
 It will request a joke from the random joke api and then it will respond with a random joke and punchline
 */
-export function joke(msg) {
+const joke = (msg) => {
   getFromApiToJSON("https://official-joke-api.appspot.com/jokes/random")
     .then((data) => {
       //sends the setup to the channel where the message was posted
@@ -15,19 +15,19 @@ export function joke(msg) {
       }, 5000);
     })
     .catch((err) => console.log(err));
-}
+};
 
 /*
 Function that displays miggys crypto holdings
 */
-export function miggysCryptoHolding(msg) {
+const miggysCryptoHolding = (msg) => {
   msg.reply(`Idk man yall know hes inconsitent. ${blessed}`);
-}
+};
 
 /*
 the message passed in will be a ticker symbol. Function will display tickers price tag.
  */
-export function stonks(msg) {
+const stonks = (msg) => {
   let ticker = userMessage.substring(1);
   ticker = ticker.toUpperCase();
   getFromApiToJSON(
@@ -40,23 +40,23 @@ export function stonks(msg) {
       }
     })
     .catch((err) => console.log(err));
-}
+};
 
 /*
 This function will insult varglu
 */
-export function trashglu(msg) {
+const trashglu = (msg) => {
   getFromApiToJSON(`https://insult.mattbas.org//api/insult.json?who=Varglu`)
     .then((data) => {
       msg.channel.send(data.insult);
     })
     .catch((err) => console.log(err));
-}
+};
 
 /*
 Will take the users role and display weather corresponding to them. 
  */
-export function weather(msg) {
+const weather = (msg) => {
   //determines users role in the discord and relates it to a set zip code
   let userZip = findUserZip(msg);
 
@@ -71,22 +71,22 @@ export function weather(msg) {
       msg.channel.send(weatherMessage);
     })
     .catch((err) => console.log(err));
-}
+};
 
 /*
 This function will display a random anime quote
 */
-export function weebScripture(msg) {
+const weebScripture = (msg) => {
   getFromApiToJSON(`https://animechanapi.xyz/api/quotes/random`)
     .then((data) => {
       const { quote, character, anime } = data.data[0];
       msg.channel.send(`${quote} - ${character} (${anime})`);
     })
     .catch((err) => console.log(err));
-}
+};
 
 //response for help command. displays list of commands and thier uses
-export function help(msg) {
+const help = (msg) => {
   msg.channel.send(`
   Watcha need from me ya ssssssnake?
   !joke - Tells a random joke.
@@ -98,4 +98,12 @@ export function help(msg) {
   !help - Brings this up, dumb fuck.
   ${process.env.blessed}
   `);
-}
+};
+
+exports.joke = joke;
+exports.miggysCryptoHolding = miggysCryptoHolding;
+exports.stonks = stonks;
+exports.trashglu = trashglu;
+exports.weather = weather;
+exports.weebScripture = weebScripture;
+exports.help = help;

@@ -3,17 +3,17 @@ const fetch = require("node-fetch");
 /*
 Takes in a URL and pulls from an API and then converts the data to JSON
 */
-export async function getFromApiToJSON(url) {
+const getFromApiToJSON = async (url) => {
   let response = await fetch(url);
   let data = await response.json();
   return data;
-}
+};
 /*
 Could not find a way to pull a channel key so  im doing this to find the role.
 This function will verify which role the user has in the discord channel and return a zip
 code correspoinding to that role as well as prints a silly message.
 */
-export function findUserZip(msg) {
+const findUserZip = (msg) => {
   switch (msg.member.roles.cache) {
     case has(process.env.pasco):
       msg.channel.send("pasco boiiiiis");
@@ -34,4 +34,6 @@ export function findUserZip(msg) {
       msg.channel.send("you aint from round these parts are ya");
       return null;
   }
-}
+};
+exports.getFromApiToJSON = getFromApiToJSON;
+exports.findUserZip = findUserZip;
