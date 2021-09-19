@@ -21,7 +21,7 @@ const joke = (msg) => {
 Function that displays miggys crypto holdings
 */
 const miggysCryptoHolding = (msg) => {
-  msg.reply(`Idk man yall know hes inconsitent. ${blessed}`);
+  msg.reply(`Idk man yall know hes inconsitent. ${process.env.blessed}`);
 };
 
 /*
