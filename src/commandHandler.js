@@ -15,7 +15,7 @@ const prefix = "!";
 //this regular expression looks for tagged users
 const taggedExp = new RegExp(String.raw`<@![0-9]{18}>`, "g");
 
-module.export = function (msg) {
+const commandHandler = (msg) => {
   let firstChar = msg.content.charAt(0);
   let userMessage = msg.content.toLowerCase().substring(1); // change message to lowercase
   let rawMessage = msg.content;
