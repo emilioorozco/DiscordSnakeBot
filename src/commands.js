@@ -79,7 +79,7 @@ export const weather = (msg) => {
 This function will display a random anime quote
 */
 export const weebScripture = (msg) => {
-  getFromApiToJSON(`https://animechanapi.xyz/api/quotes/random`)
+  getFromApiToJSON("https://animechan.vercel.app/api/random")
     .then((data) => {
       const { quote, character, anime } = data.data[0];
       msg.channel.send(`${quote} - ${character} (${anime})`);
