@@ -1,4 +1,4 @@
-import Commands from "./commands";
+import Commands from "./commands.js";
 
 //list of commands that can be used with the specified prefix. Easier to call them later on this way
 const commands = {
