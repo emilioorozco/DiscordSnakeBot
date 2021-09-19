@@ -24,12 +24,16 @@ export const findUserZip = (msg) => {
     [vegas]: ["89122", "id say yous a bettin man"],
   };
 
+  //if not found these are the defaults
+  let zipMessage = "you aint from round these parts are ya";
+  let zip = null;
+
   Object.keys(zipCodes).forEach((key) => {
     if (msg.member.roles.cache.has(key)) {
-      msg.channel.send(zipCodes[key][1]);
-      return zipCodes[key][0];
+      zipMessage = zipCodes[key][1];
+      zip = zipCodes[key][0];
     }
   });
-  msg.channel.send("you aint from round these parts are ya");
-  return null;
+  msg.channel.send(zipMessage);
+  return zip;
 };
