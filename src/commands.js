@@ -28,7 +28,7 @@ export const miggysCryptoHolding = (msg) => {
 the message passed in will be a ticker symbol. Function will display tickers price tag.
  */
 export const stonks = (msg) => {
-  let ticker = userMessage.substring(1);
+  let ticker = msg.content.substring(1);
   ticker = ticker.toUpperCase();
   getFromApiToJSON(
     `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${process.env.stonkKey}`
