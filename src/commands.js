@@ -81,7 +81,7 @@ This function will display a random anime quote
 export const weebScripture = (msg) => {
   getFromApiToJSON("https://animechan.vercel.app/api/random")
     .then((data) => {
-      const { quote, character, anime } = data.data[0];
+      const { quote, character, anime } = data;
       msg.channel.send(`${quote} - ${character} (${anime})`);
     })
     .catch((err) => console.log(err));
