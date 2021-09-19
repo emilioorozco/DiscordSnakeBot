@@ -17,11 +17,11 @@ export const findUserZip = (msg) => {
   const { pasco, richland, grandview, pullman, vegas } = process.env;
 
   const zipCodes = {
-    pasco: ["99301", "pasco boiiiiis"],
-    richland: ["99352", "too rich for yall"],
-    grandview: ["98930", "what a grand view of that ass"],
-    pullman: ["99163", "you from bum fuck nowhere b"],
-    vegas: ["89122", "id say yous a bettin man"],
+    [pasco]: ["99301", "pasco boiiiiis"],
+    [richland]: ["99352", "too rich for yall"],
+    [grandview]: ["98930", "what a grand view of that ass"],
+    [pullman]: ["99163", "you from bum fuck nowhere b"],
+    [vegas]: ["89122", "id say yous a bettin man"],
   };
 
   Object.keys(zipCodes).forEach((key) => {
